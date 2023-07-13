@@ -6,8 +6,10 @@ import numpy as np
 import plotly as py
 import ast
 from PIL import Image
+import requests
+from io import BytesIO
 
-df = pd.read_csv('D:/HCMUS/ki2/trucquan/doan/data_science_asia_clean.csv',index_col=0)
+df = pd.read_csv('https://raw.githubusercontent.com/khuong253/final_project_data_visualization/Duong/data_science_asia_clean.csv',index_col=0)
 
 def convert_to_tuple(value):
     if pd.notna(value):
@@ -29,7 +31,12 @@ for col in df.columns:
 
 st.title('Tình trạng về ngành nghề Data Science ở 4 nước Việt Nam, Nhật Bản, Hàn Quốc, Trung Quốc')
 
+st.write("  **Sản phẩm của nhóm 5 - Trực quan hoá dữ liệu 20-21** ")
 st.header('I. Giới thiệu chung')
+
+image_url = 'https://github.com/khuong253/final_project_data_visualization/blob/164a669f56b93b9717ad6b3f5dcbf04e307210b0/datascience.jpg?raw=true'
+response = requests.get(image_url)
+image = Image.open(BytesIO(response.content))
 image = Image.open('D:/HCMUS/ki2/trucquan/doan//datascience.jpg')
 st.image(image)
 st.write(
